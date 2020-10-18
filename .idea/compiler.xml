@@ -9,5 +9,8 @@
         <module name="VehicleREST" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="VehicleREST" target="14" />
+    </bytecodeTargetLevel>
   </component>
 </project>
