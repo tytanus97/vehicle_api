@@ -10,7 +10,7 @@ public class Car extends Vehicle{
     @Column(name = "number_of_doors")
     private int numberOfDoors;
 
-    @Column(name = "car_color")
+    @Column(name = "color")
     private String color;
 
     @Column(name = "engine_type")
