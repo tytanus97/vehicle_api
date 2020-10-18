@@ -29,7 +29,7 @@ public class Car extends Vehicle{
     }
 
     public Car(String modelName, String brandName, int price, int productionYear, int numberOfDoors,
-               String color, String engineType, float engineCapacity, int horsePower) {
+               String color, EngineType engineType, float engineCapacity, int horsePower) {
         super(modelName, brandName, price, productionYear);
 
         this.numberOfDoors = numberOfDoors;
@@ -55,11 +55,11 @@ public class Car extends Vehicle{
         this.color = color;
     }
 
-    public String getEngineType() {
+    public EngineType getEngineType() {
         return engineType;
     }
 
-    public void setEngineType(String engineType) {
+    public void setEngineType(EngineType engineType) {
         this.engineType = engineType;
     }
 
