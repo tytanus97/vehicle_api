@@ -1,6 +1,8 @@
 package org.example.entity;
 
 
+import org.example.utils.enums.EngineType;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,7 +17,7 @@ public class Car extends Vehicle{
 
     @Column(name = "engine_type")
     @Enumerated(value = EnumType.STRING)
-    private String engineType;
+    private EngineType engineType;
 
     @Column(name = "engine_capacity")
     private float engineCapacity;
