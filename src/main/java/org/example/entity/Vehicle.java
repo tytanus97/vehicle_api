@@ -2,8 +2,9 @@ package org.example.entity;
 
 import javax.persistence.*;
 
-@MappedSuperclass
-public class Vehicle {
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
