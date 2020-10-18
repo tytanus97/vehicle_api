@@ -1,4 +1,4 @@
-package org.vehicleapi;
+package org.example;
 
 import static org.junit.Assert.assertTrue;
 
