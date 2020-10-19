@@ -1,6 +1,7 @@
 package org.example.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -8,7 +9,8 @@ public abstract class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name="vehicle_id")
+    private Long vehicleId;
 
     @Column(name = "model_name")
     private String modelName;
@@ -22,6 +24,12 @@ public abstract class Vehicle {
     @Column(name="production_year")
     private int productionYear;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "owner_vehicle",
+    joinColumns = {@JoinColumn(name = "vehicle_id")},
+    inverseJoinColumns = {@JoinColumn(name = "owner_id")})
+    private Set<Owner> owners;
+
     public Vehicle() {
 
     }
@@ -34,11 +42,11 @@ public abstract class Vehicle {
     }
 
     public Long getId() {
-        return id;
+        return vehicleId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.vehicleId = id;
     }
 
     public String getModelName() {
