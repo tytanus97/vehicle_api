@@ -15,7 +15,7 @@ public class Rocket extends Vehicle{
     private float maxThrust;
 
     @Column(name="max_payload")
-    private float maxPayLoad;
+    private float maxPayload;
 
     public Rocket() {}
 
@@ -25,7 +25,7 @@ public class Rocket extends Vehicle{
 
         this.crewCapacity = crewCapacity;
         this.maxThrust = maxThrust;
-        this.maxPayLoad = maxPayLoad;
+        this.maxPayload = maxPayLoad;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class Rocket extends Vehicle{
         return  super.toString() +
                 "crewCapacity=" + crewCapacity +
                 ", maxThrust=" + maxThrust +
-                ", maxPayLoad=" + maxPayLoad +
+                ", maxPayLoad=" + maxPayload +
                 '}';
     }
 }
