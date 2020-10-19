@@ -27,4 +27,13 @@ public class Rocket extends Vehicle{
         this.maxThrust = maxThrust;
         this.maxPayLoad = maxPayLoad;
     }
+
+    @Override
+    public String toString() {
+        return  super.toString() +
+                "crewCapacity=" + crewCapacity +
+                ", maxThrust=" + maxThrust +
+                ", maxPayLoad=" + maxPayLoad +
+                '}';
+    }
 }
