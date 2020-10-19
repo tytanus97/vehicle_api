@@ -1,0 +1,67 @@
+package org.example.entity;
+
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+@Table(name="owner")
+public class Owner {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="owner_id")
+    private long ownerId;
+
+    @Column(name="first_name")
+    private String firstName;
+
+    @Column(name="last_name")
+    private String lastName;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "owner_vehicle",joinColumns = {@JoinColumn(name="owner_id")}
+    ,inverseJoinColumns = {@JoinColumn(name="vehicle_id")})
+    private Set<Vehicle> ownedVehicles;
+
+    public Owner() {
+    }
+
+    public Owner(long id, String firstName, String lastName, Set<Vehicle> ownedVehicles) {
+        this.ownerId = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.ownedVehicles = ownedVehicles;
+    }
+
+    public long getId() {
+        return ownerId;
+    }
+
+    public void setId(long id) {
+        this.ownerId = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Set<Vehicle> getOwnedVehicles() {
+        return ownedVehicles;
+    }
+
+    public void setOwnedVehicles(Set<Vehicle> ownedVehicles) {
+        this.ownedVehicles = ownedVehicles;
+    }
+}
