@@ -25,7 +25,7 @@ public abstract class Vehicle {
     @Column(name="production_year")
     private int productionYear;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "owner_vehicle",
     joinColumns = {@JoinColumn(name = "vehicle_id")},
     inverseJoinColumns = {@JoinColumn(name = "owner_id")})

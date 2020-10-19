@@ -19,7 +19,7 @@ public class Owner {
     @Column(name="last_name")
     private String lastName;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "owner_vehicle",joinColumns = {@JoinColumn(name="owner_id")}
     ,inverseJoinColumns = {@JoinColumn(name="vehicle_id")})
     private Set<Vehicle> ownedVehicles;
@@ -84,7 +84,6 @@ public class Owner {
                 "ownerId=" + ownerId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", ownedVehicles=" + ownedVehicles +
                 '}';
     }
 }
