@@ -29,6 +29,7 @@ public class VehicleService {
 
     @Transactional
     public Vehicle addVehicle(Vehicle vehicle) {
+
         return this.vehicleRepository.save(vehicle);
     }
 
@@ -42,6 +43,7 @@ public class VehicleService {
         return this.vehicleRepository.findById(vehicleId);
     }
 
+   // public List<VehicleDTO>
 
     @Transactional
     public Vehicle updateVehicle(Vehicle vehicle) {
@@ -53,13 +55,12 @@ public class VehicleService {
         this.vehicleRepository.deleteById(vehicleId);
     }
 
-
-    public VehicleDTO mapToVehicleDTO(Vehicle vehicle, Class<? extends VehicleDTO> specificTargetDTOClass){
-        return this.modelMapper.map(vehicle,specificTargetDTOClass);
+    public VehicleDTO mapToVehicleDTO(Vehicle vehicle){
+        return this.modelMapper.map(vehicle,VehicleDTO.class);
     }
 
-    public Vehicle mapToVehicle(VehicleDTO vehicleDTO,Class<? extends Vehicle> specificTargetClass) {
-        return this.modelMapper.map(vehicleDTO,specificTargetClass);
+    public Vehicle mapToVehicle(VehicleDTO vehicleDTO) {
+        return this.modelMapper.map(vehicleDTO,Vehicle.class);
     }
 
 }
