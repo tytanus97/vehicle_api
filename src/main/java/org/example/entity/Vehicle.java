@@ -5,6 +5,7 @@ import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name="vehicle_type",discriminatorType = DiscriminatorType.STRING)
 public abstract class Vehicle {
 
     @Id
@@ -41,12 +42,12 @@ public abstract class Vehicle {
         this.productionYear = productionYear;
     }
 
-    public Long getId() {
+    public Long getVehicleId() {
         return vehicleId;
     }
 
-    public void setId(Long id) {
-        this.vehicleId = id;
+    public void setVehicleId(Long vehicleId) {
+        this.vehicleId = vehicleId;
     }
 
     public String getModelName() {
@@ -79,6 +80,16 @@ public abstract class Vehicle {
 
     public void setProductionYear(int productionYear) {
         this.productionYear = productionYear;
+    }
+
+
+
+    public Set<Owner> getOwners() {
+        return owners;
+    }
+
+    public void setOwners(Set<Owner> owners) {
+        this.owners = owners;
     }
 
     @Override

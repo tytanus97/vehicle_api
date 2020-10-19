@@ -1,11 +1,13 @@
 package org.example.entity;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="rocket")
+@DiscriminatorValue("rocket")
 public class Rocket extends Vehicle{
 
     @Column(name="crew_capacity")
