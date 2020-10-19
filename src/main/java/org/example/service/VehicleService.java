@@ -2,6 +2,7 @@ package org.example.service;
 
 
 import org.example.dto.CarDTO;
+import org.example.dto.OwnerDTO;
 import org.example.dto.VehicleDTO;
 import org.example.entity.Owner;
 import org.example.entity.Vehicle;
@@ -12,8 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class VehicleService {
@@ -28,9 +30,9 @@ public class VehicleService {
     }
 
     @Transactional
-    public Vehicle addVehicle(Vehicle vehicle) {
-
-        return this.vehicleRepository.save(vehicle);
+    public VehicleDTO addVehicle(VehicleDTO vehicleDTO) {
+        Vehicle vehicle = mapToVehicle(vehicleDTO);
+        return mapToVehicleDTO(this.vehicleRepository.save(vehicle));
     }
 
     @Transactional
@@ -39,15 +41,22 @@ public class VehicleService {
     }
 
     @Transactional
-    public Optional<Vehicle> findById(long vehicleId) {
-        return this.vehicleRepository.findById(vehicleId);
+    public Optional<VehicleDTO> findById(long vehicleId) {
+        Optional<Vehicle> vehicle = this.vehicleRepository.findById(vehicleId);
+        return vehicle.isPresent() ? Optional.of(mapToVehicleDTO(vehicle.get())):Optional.empty();
     }
 
-   // public List<VehicleDTO>
+    @Transactional
+    public List<VehicleDTO> findAllVehicles() {
+        return this.vehicleRepository.findAll().stream()
+                .map(this::mapToVehicleDTO).collect(Collectors.toList());
+
+    }
 
     @Transactional
-    public Vehicle updateVehicle(Vehicle vehicle) {
-        return this.vehicleRepository.save(vehicle);
+    public VehicleDTO updateVehicle(VehicleDTO vehicleDTO) {
+        Vehicle vehicle = mapToVehicle(vehicleDTO);
+        return mapToVehicleDTO(this.vehicleRepository.save(vehicle));
     }
 
     @Transactional
