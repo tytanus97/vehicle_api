@@ -1,26 +1,26 @@
 package org.example.service;
 
+import org.example.dto.OwnerDTO;
 import org.example.entity.Owner;
 import org.example.entity.Vehicle;
 import org.example.repository.OwnerRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
 
 @Service
 public class OwnerService {
-
+    private final ModelMapper modelMapper;
     private final OwnerRepository ownerRepository;
 
 
     @Autowired
-    public OwnerService(OwnerRepository ownerRepository) {
-
+    public OwnerService(ModelMapper modelMapper, OwnerRepository ownerRepository) {
+        this.modelMapper = modelMapper;
         this.ownerRepository = ownerRepository;
     }
 
@@ -39,7 +39,6 @@ public class OwnerService {
         return this.ownerRepository.findOwnerVehicles(ownerId);
     }
 
-
     @Transactional
     public Owner updateOwner(Owner owner) {
         return this.ownerRepository.save(owner);
@@ -51,7 +50,13 @@ public class OwnerService {
     }
 
 
+    public OwnerDTO mapToOwnerDTO(Owner owner) {
+        return this.modelMapper.map(owner,OwnerDTO.class);
+    }
 
+    public Owner mapToOwner(OwnerDTO ownerDTO) {
+        return this.modelMapper.map(ownerDTO,Owner.class);
+    }
 
 
 }
