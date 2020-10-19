@@ -27,8 +27,7 @@ public class Owner {
     public Owner() {
     }
 
-    public Owner(long id, String firstName, String lastName, Set<Vehicle> ownedVehicles) {
-        this.ownerId = id;
+    public Owner(String firstName, String lastName, Set<Vehicle> ownedVehicles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ownedVehicles = ownedVehicles;
