@@ -1,6 +1,7 @@
 package org.example.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -63,5 +64,28 @@ public class Owner {
 
     public void setOwnedVehicles(Set<Vehicle> ownedVehicles) {
         this.ownedVehicles = ownedVehicles;
+    }
+
+    public void addVehicle(Vehicle vehicle) {
+        if(this.ownedVehicles == null) {
+            this.ownedVehicles = new HashSet<>();
+        }
+        this.ownedVehicles.add(vehicle);
+    }
+
+    public void removeVehicle(Vehicle vehicle) {
+        if(this.ownedVehicles != null && this.ownedVehicles.size() > 0) {
+            this.ownedVehicles.remove(vehicle);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Owner{" +
+                "ownerId=" + ownerId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", ownedVehicles=" + ownedVehicles +
+                '}';
     }
 }
