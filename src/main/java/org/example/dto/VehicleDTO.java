@@ -1,7 +1,11 @@
 package org.example.dto;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import java.util.Set;
 
+
+@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, property="type")
 public class VehicleDTO {
 
     private Long vehicleId;
