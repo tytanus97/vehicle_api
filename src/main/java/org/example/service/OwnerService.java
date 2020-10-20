@@ -25,13 +25,16 @@ public class OwnerService {
     }
 
     @Transactional
-    public Owner addOwner(Owner owner) {
-            return this.ownerRepository.save(owner);
+    public OwnerDTO addOwner(OwnerDTO ownerDTO)
+    {
+            Owner owner = mapToOwner(ownerDTO);
+            return mapToOwnerDTO(this.ownerRepository.save(owner));
     }
 
     @Transactional
-    public Optional<Owner> findById(long ownerId) {
-        return this.ownerRepository.findById(ownerId);
+    public Optional<OwnerDTO> findById(long ownerId) {
+        Optional<Owner> owner = this.ownerRepository.findById(ownerId);
+        return owner.isPresent()?Optional.of(mapToOwnerDTO(owner.get())):Optional.empty();
     }
 
     @Transactional
@@ -40,8 +43,9 @@ public class OwnerService {
     }
 
     @Transactional
-    public Owner updateOwner(Owner owner) {
-        return this.ownerRepository.save(owner);
+    public OwnerDTO updateOwner(OwnerDTO ownerDTO) {
+        Owner owner = mapToOwner(ownerDTO);
+        return mapToOwnerDTO(this.ownerRepository.save(owner));
     }
 
     @Transactional
