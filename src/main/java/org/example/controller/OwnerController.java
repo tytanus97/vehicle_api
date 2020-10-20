@@ -1,7 +1,6 @@
 package org.example.controller;
 
 
-import org.apache.coyote.Response;
 import org.example.dto.OwnerDTO;
 import org.example.dto.VehicleDTO;
 import org.example.entity.Vehicle;
@@ -42,7 +41,7 @@ public class OwnerController {
         else return new ResponseEntity<>(ownerDTO.get(),HttpStatus.OK);
     }
 
-    @GetMapping("/{ownerId}")
+    @GetMapping("/{ownerId}/ownedVehicles")
     public ResponseEntity<Set<VehicleDTO>> findOwnerVehicles(@PathVariable Long ownerId) {
         Set<Vehicle> vehicleSet = this.ownerService.findOwnerVehicles(ownerId);
         Set<VehicleDTO> vehicleDTOSet = vehicleSet.stream()

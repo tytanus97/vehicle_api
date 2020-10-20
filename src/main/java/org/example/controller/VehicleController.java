@@ -1,6 +1,5 @@
 package org.example.controller;
 
-import org.apache.coyote.Response;
 import org.example.dto.OwnerDTO;
 import org.example.dto.VehicleDTO;
 import org.example.entity.Owner;
