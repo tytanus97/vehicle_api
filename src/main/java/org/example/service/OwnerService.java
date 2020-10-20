@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class OwnerService {
@@ -35,6 +37,12 @@ public class OwnerService {
     public Optional<OwnerDTO> findById(long ownerId) {
         Optional<Owner> owner = this.ownerRepository.findById(ownerId);
         return owner.isPresent()?Optional.of(mapToOwnerDTO(owner.get())):Optional.empty();
+    }
+
+    @Transactional
+    public List<OwnerDTO> findAllOwners() {
+        List<Owner> ownerList = this.ownerRepository.findAll();
+        return ownerList.stream().map(this::mapToOwnerDTO).collect(Collectors.toList());
     }
 
     @Transactional
