@@ -1,5 +1,7 @@
 package org.example.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.controller.VehicleController;
 import org.example.dto.CarDTO;
 import org.example.dto.RocketDTO;
 import org.example.dto.VehicleDTO;
@@ -27,9 +29,17 @@ public class Config {
                 .setConverter(mappingContext -> modelMapper.map(mappingContext.getSource(),RocketDTO.class));
         modelMapper.createTypeMap(RocketDTO.class,Vehicle.class)
                 .setConverter(mappingContext -> modelMapper.map(mappingContext.getSource(),Rocket.class));
-
-
-
         return modelMapper;
+    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        System.out.println("configured object mapper");
+        objectMapper.registerSubtypes(RocketDTO.class);
+        objectMapper.registerSubtypes(CarDTO.class);
+
+        return objectMapper;
     }
 }
