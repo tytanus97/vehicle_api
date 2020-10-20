@@ -4,6 +4,7 @@ package org.example.entity;
 import org.example.utils.enums.EngineType;
 
 import javax.persistence.*;
+import java.util.HashSet;
 
 @Entity
 @Table(name="car")
@@ -30,8 +31,8 @@ public class Car extends Vehicle{
     }
 
     public Car(String modelName, String brandName, int price, int productionYear, int numberOfDoors,
-               String color, EngineType engineType, float engineCapacity, int horsePower) {
-        super(modelName, brandName, price, productionYear);
+               String color, EngineType engineType, float engineCapacity, int horsePower, HashSet<Owner> owners) {
+        super(modelName, brandName, price, productionYear,owners);
 
         this.numberOfDoors = numberOfDoors;
         this.color = color;

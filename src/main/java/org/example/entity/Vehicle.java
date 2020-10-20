@@ -1,6 +1,7 @@
 package org.example.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -35,11 +36,12 @@ public abstract class Vehicle {
 
     }
 
-    public Vehicle(String modelName, String brandName, int price, int productionYear) {
+    public Vehicle(String modelName, String brandName, int price, int productionYear, HashSet<Owner> owners) {
         this.modelName = modelName;
         this.brandName = brandName;
         this.price = price;
         this.productionYear = productionYear;
+        this.owners = owners;
     }
 
     public Long getVehicleId() {
