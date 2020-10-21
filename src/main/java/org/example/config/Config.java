@@ -1,7 +1,6 @@
 package org.example.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.controller.VehicleController;
 import org.example.dto.CarDTO;
 import org.example.dto.RocketDTO;
 import org.example.dto.VehicleDTO;

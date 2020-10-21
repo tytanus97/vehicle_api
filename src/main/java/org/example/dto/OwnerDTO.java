@@ -1,7 +1,5 @@
 package org.example.dto;
 
-import org.example.entity.Vehicle;
-
 import java.util.Set;
 
 public class OwnerDTO {
