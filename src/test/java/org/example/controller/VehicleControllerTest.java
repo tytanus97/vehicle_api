@@ -128,7 +128,7 @@ public class VehicleControllerTest {
 
     List<VehicleDTO> prepareData() {
         return Arrays.asList(new CarDTO(),new RocketDTO(1L,"Falcon 9","SpaceX",5000000,
-                2019,new HashSet<>(),2500,10,200),new CarDTO());
+                2019,2500,10,200,new HashSet<>()),new CarDTO());
     }
 
     VehicleDTO getExampleVehicleDTO() {
