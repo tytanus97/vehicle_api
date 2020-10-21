@@ -91,7 +91,7 @@ public class VehicleControllerTest {
 
     @Test
     public void getRequestForFindAllVehiclesShouldReturnResponseEntityWithStatusOK() throws Exception {
-        MockHttpServletResponse response = mockMvc.perform(get("/vehicles/"))
+        MockHttpServletResponse response = mockMvc.perform(get("/api/vehicles/"))
                 .andReturn().getResponse();
 
         assertEquals(HttpStatus.OK.value(),response.getStatus());
@@ -100,7 +100,7 @@ public class VehicleControllerTest {
 
     @Test
     public void getRequestForFindAllVehiclesShouldReturnResponseEntityWithVehicleDTOList() throws Exception {
-        MockHttpServletResponse response = mockMvc.perform(get("/vehicles/"))
+        MockHttpServletResponse response = mockMvc.perform(get("/api/vehicles/"))
                 .andReturn().getResponse();
        List<VehicleDTO> resultList = Arrays.asList(objectMapper.readValue(response.getContentAsString(),VehicleDTO[].class));
        assertFalse(resultList.isEmpty());
@@ -110,7 +110,7 @@ public class VehicleControllerTest {
     public void putRequestShouldReturnVehicleDTO() throws Exception {
         VehicleDTO vehicleDTOBody = new CarDTO();
         String bodyJSON = objectMapper.writeValueAsString(vehicleDTOBody);
-        MockHttpServletResponse response = mockMvc.perform(put("/vehicles/1")
+        MockHttpServletResponse response = mockMvc.perform(put("/api/vehicles/1")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(bodyJSON))
                 .andReturn().getResponse();

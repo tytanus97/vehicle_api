@@ -61,7 +61,7 @@ public class VehicleControllerIntegrationTest {
         this.vehicleRepository.save(new Car("Model S","Tesla",200000,2018,
                 5,"RED", EngineType.ELECTRIC,0F,300,new HashSet<>()));
 
-        MockHttpServletResponse response = mockMvc.perform(get("/vehicles/")
+        MockHttpServletResponse response = mockMvc.perform(get("/api/vehicles/")
         .accept(MediaType.APPLICATION_JSON))
                 .andReturn()
                 .getResponse();
@@ -80,7 +80,7 @@ public class VehicleControllerIntegrationTest {
 
        String vehicleJSON = objectMapper.writeValueAsString(requestBody);
 
-       MockHttpServletResponse response = mockMvc.perform(post("/vehicles/")
+       MockHttpServletResponse response = mockMvc.perform(post("/api/vehicles/")
        .contentType(MediaType.APPLICATION_JSON)
        .accept(MediaType.APPLICATION_JSON)
        .content(vehicleJSON))
