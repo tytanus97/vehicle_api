@@ -6,8 +6,6 @@ import org.example.controller.VehicleController;
 import org.example.dto.RocketDTO;
 import org.example.dto.VehicleDTO;
 import org.example.entity.Car;
-import org.example.entity.Rocket;
-import org.example.entity.Vehicle;
 import org.example.repository.VehicleRepository;
 import org.example.utils.enums.EngineType;
 import org.junit.jupiter.api.BeforeEach;

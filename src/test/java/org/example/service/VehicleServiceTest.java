@@ -4,7 +4,6 @@ import org.example.config.Config;
 import org.example.dto.CarDTO;
 import org.example.dto.VehicleDTO;
 import org.example.entity.Car;
-import org.example.entity.Owner;
 import org.example.entity.Rocket;
 import org.example.entity.Vehicle;
 import org.example.repository.VehicleRepository;
@@ -16,7 +15,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
