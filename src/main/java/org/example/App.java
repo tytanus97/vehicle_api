@@ -1,5 +1,8 @@
 package org.example;
 
+import com.fasterxml.classmate.TypeResolver;
+import org.example.dto.CarDTO;
+import org.example.dto.RocketDTO;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +23,13 @@ public class App{
 
     @Bean
     public Docket swaggerConfiguration() {
+
+        TypeResolver typeResolver = new TypeResolver();
         return new Docket(DocumentationType.SWAGGER_2)
+                .additionalModels(
+                        typeResolver.resolve(CarDTO.class),
+                        typeResolver.resolve(RocketDTO.class)
+                )
                 .select()
                 .paths(PathSelectors.ant("/api/**"))
                 .build();
