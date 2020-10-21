@@ -17,7 +17,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/owners")
+@RequestMapping("/api/owners")
 public class OwnerController {
 
     private final OwnerService ownerService;
