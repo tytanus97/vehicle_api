@@ -2,7 +2,6 @@ package org.example.service;
 
 import org.example.config.Config;
 import org.example.dto.CarDTO;
-import org.example.dto.RocketDTO;
 import org.example.dto.VehicleDTO;
 import org.example.entity.Car;
 import org.example.entity.Owner;
@@ -67,18 +66,9 @@ public class VehicleServiceTest {
         assertNotNull(vehicleDTO);
     }
 
-
     List<Vehicle> prepareData() {
         return Arrays.asList(new Car(),new Rocket("Falcon 9","SpaceX",5000000,
                 2019,2500,2000,10,new HashSet<>()),new Car());
-    }
-
-    Vehicle getExampleVehicle() {
-        return prepareData().get(1);
-    }
-
-    Set<Owner> prepareDataOwner() {
-        return Set.of(new Owner(),new Owner(),new Owner());
     }
 
 }
