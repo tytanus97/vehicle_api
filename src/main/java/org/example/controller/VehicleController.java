@@ -15,6 +15,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@CrossOrigin(allowCredentials = "true",allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/vehicles")
 public class VehicleController {

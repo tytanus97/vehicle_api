@@ -7,6 +7,7 @@ import org.example.entity.Vehicle;
 import org.example.service.OwnerService;
 import org.example.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.client.AutoConfigureMockRestServiceServer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@CrossOrigin(allowCredentials = "true",allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/owners")
 public class OwnerController {
