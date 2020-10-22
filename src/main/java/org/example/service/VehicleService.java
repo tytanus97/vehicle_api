@@ -56,6 +56,13 @@ public class VehicleService {
         this.vehicleRepository.deleteById(vehicleId);
     }
 
+    @Transactional
+    public List<VehicleDTO> findByType(String type) throws ClassNotFoundException {
+        String className = "org.example.entity."+type;
+        return this.vehicleRepository.findCars(Class.forName(className)).stream()
+                .map(this::mapToVehicleDTO).collect(Collectors.toList());
+    }
+
     public VehicleDTO mapToVehicleDTO(Vehicle vehicle){
         return this.modelMapper.map(vehicle, VehicleDTO.class);
     }
@@ -63,5 +70,6 @@ public class VehicleService {
     public Vehicle mapToVehicle(VehicleDTO vehicleDTO) {
         return this.modelMapper.map(vehicleDTO,Vehicle.class);
     }
+
 
 }

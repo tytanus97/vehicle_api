@@ -41,6 +41,13 @@ public class VehicleController {
         return new ResponseEntity<>(resultVehicleDTO.get(),HttpStatus.OK);
     }
 
+    @GetMapping("/findByType")
+    public ResponseEntity<List<VehicleDTO>> findByType(@RequestParam String type) throws ClassNotFoundException {
+        List<VehicleDTO> resultList = this.vehicleService.findByType(type);
+        return new ResponseEntity<>(resultList,HttpStatus.OK);
+    }
+
+
     @PostMapping("/")
     public ResponseEntity<VehicleDTO> addVehicle(@RequestBody VehicleDTO vehicleDTO) {
         VehicleDTO persistedVehicleDTO = this.vehicleService.addVehicle(vehicleDTO);

@@ -47,22 +47,21 @@ public class App{
         Vehicle car = new Car("Model X","Tesla",100000,2019,
                 5,"red", EngineType.ELECTRIC, 0,200);
         Vehicle persistedCar = vehicleRepository.save(car);
-
         HashSet<Vehicle> ownedVehicles = new HashSet<>();
         ownedVehicles.add(persistedCar);
-
         Owner owner1 = new Owner("Elon","Musk",ownedVehicles);
         Owner persistedOwner = ownerRepository.save(owner1);
-
         VehicleDTO vehicleDTO = vehicleService.mapToVehicleDTO(persistedCar);
-        System.out.println(vehicleDTO.toString());
-
         OwnerDTO ownerDTO = ownerService.mapToOwnerDTO(persistedOwner);
-
         List<OwnerDTO> ownerList = ownerService.findAllOwners();
 
-        System.out.println(ownerDTO.toString());
-        System.out.println(ownerList.toString());
+        try {
+            List<VehicleDTO> vehicleList = vehicleService.findByType("Car");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(vehicleDTO.toString());
 
         vehicleRepository.flush();
         ownerRepository.flush();
