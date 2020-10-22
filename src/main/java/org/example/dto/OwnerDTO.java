@@ -12,11 +12,11 @@ public class OwnerDTO {
     public OwnerDTO() {
     }
 
-    public OwnerDTO(long ownerId, String firstName, String lastName,Set<VehicleDTO> vehicleSet) {
+    public OwnerDTO(long ownerId, String firstName, String lastName,Set<VehicleDTO> vehicles) {
         this.ownerId = ownerId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.ownedVehicles = vehicleSet;
+        this.ownedVehicles = vehicles;
     }
 
     public long getOwnerId() {
