@@ -6,6 +6,7 @@ import org.example.controller.VehicleController;
 import org.example.dto.RocketDTO;
 import org.example.dto.VehicleDTO;
 import org.example.entity.Car;
+import org.example.entity.Vehicle;
 import org.example.repository.VehicleRepository;
 import org.example.utils.enums.EngineType;
 import org.junit.jupiter.api.BeforeEach;
@@ -58,8 +59,9 @@ public class VehicleControllerIntegrationTest {
     @Test
     public void shouldReturnListOfVehicleDTO() throws Exception{
 
-        this.vehicleRepository.save(new Car("Model S","Tesla",200000,2018,
-                5,"RED", EngineType.ELECTRIC,0F,300,new HashSet<>()));
+        this.vehicleRepository.save(new Car("Model X","Tesla",100000,2019,
+                        5,"red", EngineType.ELECTRIC,
+                        0,200));
 
         MockHttpServletResponse response = mockMvc.perform(get("/api/vehicles/")
         .accept(MediaType.APPLICATION_JSON))
@@ -76,7 +78,7 @@ public class VehicleControllerIntegrationTest {
     public void shouldReturnPersistedVehicle() throws Exception{
 
        VehicleDTO requestBody =  new RocketDTO(0L,"Falcon 9","SpaceX",2000000,2019,
-                2,2500,10,new HashSet<>());
+                2,2500,10);
 
        String vehicleJSON = objectMapper.writeValueAsString(requestBody);
 

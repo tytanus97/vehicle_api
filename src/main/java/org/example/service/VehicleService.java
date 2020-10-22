@@ -2,7 +2,6 @@ package org.example.service;
 
 
 import org.example.dto.VehicleDTO;
-import org.example.entity.Owner;
 import org.example.entity.Vehicle;
 import org.example.repository.VehicleRepository;
 import org.modelmapper.ModelMapper;
@@ -12,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,10 +31,6 @@ public class VehicleService {
         return mapToVehicleDTO(this.vehicleRepository.save(vehicle));
     }
 
-    @Transactional
-    public Set<Owner> findVehicleOwners(Long vehicleId) {
-       return this.vehicleRepository.findVehicleOwners(vehicleId);
-    }
 
     @Transactional
     public Optional<VehicleDTO> findById(long vehicleId) {
@@ -63,7 +57,7 @@ public class VehicleService {
     }
 
     public VehicleDTO mapToVehicleDTO(Vehicle vehicle){
-        return this.modelMapper.map(vehicle,VehicleDTO.class);
+        return this.modelMapper.map(vehicle, VehicleDTO.class);
     }
 
     public Vehicle mapToVehicle(VehicleDTO vehicleDTO) {

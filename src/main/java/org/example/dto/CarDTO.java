@@ -13,9 +13,9 @@ public class CarDTO extends VehicleDTO {
     public CarDTO() {
     }
 
-    public CarDTO(Long vehicleId, String modelName, String brandName, int price, int productionYear, Set<OwnerDTO> owners,
+    public CarDTO(Long vehicleId, String modelName, String brandName, int price, int productionYear,
                   int numberOfDoors, String color, String engineType, float engineCapacity, int horsePower) {
-        super(vehicleId, modelName, brandName, price, productionYear, owners);
+        super(vehicleId, modelName, brandName, price, productionYear);
         this.numberOfDoors = numberOfDoors;
         this.color = color;
         this.engineType = engineType;

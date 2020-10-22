@@ -23,8 +23,8 @@ public class Rocket extends Vehicle{
     public Rocket() {}
 
     public Rocket(String modelName, String brandName, int price, int productionYear, int crewCapacity,
-                  float maxThrust, float maxPayLoad, HashSet<Owner> owners) {
-        super(modelName, brandName, price, productionYear,owners);
+                  float maxThrust, float maxPayLoad) {
+        super(modelName, brandName, price, productionYear);
 
         this.crewCapacity = crewCapacity;
         this.maxThrust = maxThrust;

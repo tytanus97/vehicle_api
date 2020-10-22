@@ -12,8 +12,8 @@ public class RocketDTO extends VehicleDTO {
     }
 
     public RocketDTO(Long vehicleId, String modelName, String brandName, int price, int productionYear,
-                      int crewCapacity, float maxThrust, float maxPayload,Set<OwnerDTO> owners) {
-        super(vehicleId, modelName, brandName, price, productionYear, owners);
+                      int crewCapacity, float maxThrust, float maxPayload) {
+        super(vehicleId, modelName, brandName, price, productionYear);
         this.crewCapacity = crewCapacity;
         this.maxThrust = maxThrust;
         this.maxPayload = maxPayload;

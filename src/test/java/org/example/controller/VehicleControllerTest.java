@@ -58,8 +58,8 @@ public class VehicleControllerTest {
 
         given(vehicleService.findById(any(Long.class))).willReturn(Optional.of(prepareData().get(1)));
 
-        given(vehicleService.findVehicleOwners(1L))
-                .willReturn(prepareDataOwnerDTO());
+      /*  given(vehicleService.findVehicleOwners(1L))
+                .willReturn(prepareDataOwnerDTO());*/
 
         given(vehicleService.mapToVehicle(any(VehicleDTO.class))).willReturn(new Car());
 
@@ -125,7 +125,7 @@ public class VehicleControllerTest {
 
     List<VehicleDTO> prepareData() {
         return Arrays.asList(new CarDTO(),new RocketDTO(1L,"Falcon 9","SpaceX",5000000,
-                2019,2500,10,200,new HashSet<>()),new CarDTO());
+                2019,2500,10,200),new CarDTO());
     }
 
     VehicleDTO getExampleVehicleDTO() {

@@ -43,13 +43,6 @@ public class OwnerController {
         else return new ResponseEntity<>(ownerDTO.get(),HttpStatus.OK);
     }
 
-    @GetMapping("/{ownerId}/ownedVehicles")
-    public ResponseEntity<Set<VehicleDTO>> findOwnerVehicles(@PathVariable Long ownerId) {
-        Set<Vehicle> vehicleSet = this.ownerService.findOwnerVehicles(ownerId);
-        Set<VehicleDTO> vehicleDTOSet = vehicleSet.stream()
-                .map(vehicleService::mapToVehicleDTO).collect(Collectors.toSet());
-        return new ResponseEntity<>(vehicleDTOSet,HttpStatus.OK);
-    }
 
     @PostMapping("/")
     public ResponseEntity<OwnerDTO> addOwner(@RequestBody OwnerDTO ownerDTO) {

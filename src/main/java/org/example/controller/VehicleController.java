@@ -1,8 +1,6 @@
 package org.example.controller;
 
-import org.example.dto.OwnerDTO;
 import org.example.dto.VehicleDTO;
-import org.example.entity.Owner;
 import org.example.service.OwnerService;
 import org.example.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @CrossOrigin(allowCredentials = "true",allowedHeaders = "*")
 @RestController
@@ -21,12 +17,12 @@ import java.util.stream.Collectors;
 public class VehicleController {
 
     private final VehicleService vehicleService;
-    private final OwnerService ownerService;
+
 
     @Autowired
     public VehicleController(VehicleService vehicleService, OwnerService ownerService) {
         this.vehicleService = vehicleService;
-        this.ownerService = ownerService;
+
     }
 
     @GetMapping("/")
@@ -43,13 +39,6 @@ public class VehicleController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(resultVehicleDTO.get(),HttpStatus.OK);
-    }
-
-    @GetMapping("/{vehicleId}/owners")
-    public ResponseEntity<Set<OwnerDTO>> findVehicleOwners(@PathVariable Long vehicleId) {
-        Set<Owner> ownerSet = this.vehicleService.findVehicleOwners(vehicleId);
-        Set<OwnerDTO> ownerDTOSet = ownerSet.stream().map(ownerService::mapToOwnerDTO).collect(Collectors.toSet());
-        return new ResponseEntity<>(ownerDTOSet,HttpStatus.OK);
     }
 
     @PostMapping("/")

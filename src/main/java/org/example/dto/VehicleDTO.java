@@ -1,5 +1,6 @@
 package org.example.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import java.util.Set;
@@ -13,18 +14,18 @@ public class VehicleDTO {
     private String brandName;
     private int price;
     private int productionYear;
-    private Set<OwnerDTO> owners;
+
 
     public VehicleDTO() {
     }
 
-    public VehicleDTO(Long vehicleId, String modelName, String brandName, int price, int productionYear, Set<OwnerDTO> owners) {
+    public VehicleDTO(Long vehicleId, String modelName, String brandName, int price, int productionYear) {
         this.vehicleId = vehicleId;
         this.modelName = modelName;
         this.brandName = brandName;
         this.price = price;
         this.productionYear = productionYear;
-        this.owners = owners;
+        //this.owners = owners;
     }
 
     public Long getVehicleId() {
@@ -65,14 +66,6 @@ public class VehicleDTO {
 
     public void setProductionYear(int productionYear) {
         this.productionYear = productionYear;
-    }
-
-    public Set<OwnerDTO> getOwners() {
-        return owners;
-    }
-
-    public void setOwners(Set<OwnerDTO> owners) {
-        this.owners = owners;
     }
 
     @Override

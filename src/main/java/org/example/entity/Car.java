@@ -30,9 +30,9 @@ public class Car extends Vehicle{
     public Car() {
     }
 
-    public Car(String modelName, String brandName, int price, int productionYear, int numberOfDoors,
-               String color, EngineType engineType, float engineCapacity, int horsePower, HashSet<Owner> owners) {
-        super(modelName, brandName, price, productionYear,owners);
+    public Car(String modelName, String brandName, int price, int productionYear,int numberOfDoors,
+               String color, EngineType engineType, float engineCapacity, int horsePower) {
+        super(modelName, brandName, price, productionYear);
 
         this.numberOfDoors = numberOfDoors;
         this.color = color;

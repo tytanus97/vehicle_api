@@ -1,8 +1,6 @@
 package org.example.entity;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -26,22 +24,15 @@ public abstract class Vehicle {
     @Column(name="production_year")
     private int productionYear;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "owner_vehicle",
-    joinColumns = {@JoinColumn(name = "vehicle_id")},
-    inverseJoinColumns = {@JoinColumn(name = "owner_id")})
-    private Set<Owner> owners;
-
     public Vehicle() {
 
     }
 
-    public Vehicle(String modelName, String brandName, int price, int productionYear, HashSet<Owner> owners) {
+    public Vehicle(String modelName, String brandName, int price, int productionYear) {
         this.modelName = modelName;
         this.brandName = brandName;
         this.price = price;
         this.productionYear = productionYear;
-        this.owners = owners;
     }
 
     public Long getVehicleId() {
@@ -82,16 +73,6 @@ public abstract class Vehicle {
 
     public void setProductionYear(int productionYear) {
         this.productionYear = productionYear;
-    }
-
-
-
-    public Set<Owner> getOwners() {
-        return owners;
-    }
-
-    public void setOwners(Set<Owner> owners) {
-        this.owners = owners;
     }
 
     @Override

@@ -2,7 +2,6 @@ package org.example.service;
 
 import org.example.dto.OwnerDTO;
 import org.example.entity.Owner;
-import org.example.entity.Vehicle;
 import org.example.repository.OwnerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -42,13 +40,10 @@ public class OwnerService {
     @Transactional
     public List<OwnerDTO> findAllOwners() {
         List<Owner> ownerList = this.ownerRepository.findAll();
+        System.out.println(ownerList.toString());
         return ownerList.stream().map(this::mapToOwnerDTO).collect(Collectors.toList());
     }
 
-    @Transactional
-    public Set<Vehicle> findOwnerVehicles(Long ownerId) {
-        return this.ownerRepository.findOwnerVehicles(ownerId);
-    }
 
     @Transactional
     public OwnerDTO updateOwner(OwnerDTO ownerDTO) {

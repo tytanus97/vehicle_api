@@ -16,7 +16,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -70,7 +69,7 @@ public class VehicleServiceTest {
 
     List<Vehicle> prepareData() {
         return Arrays.asList(new Car(),new Rocket("Falcon 9","SpaceX",5000000,
-                2019,2500,2000,10,new HashSet<>()),new Car());
+                2019,2500,2000,10),new Car());
     }
 
 }
